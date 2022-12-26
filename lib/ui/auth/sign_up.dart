@@ -1,7 +1,7 @@
 import 'package:cinema/ImagesConsts.dart';
-import 'package:cinema/custom_checkbox.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import '../../custom_checkbox.dart';
 
 class SignUpIcons extends StatelessWidget {
   const SignUpIcons({Key? key}) : super(key: key);
@@ -67,6 +67,32 @@ class _SignInTextFieldsState extends State<SignInTextFields> {
   );
 
   bool isChecked = false;
+  final emailTextController = TextEditingController();
+  final passwordTextController = TextEditingController();
+
+  bool? _authUser() {
+    if (emailTextController.text.isNotEmpty &&
+        passwordTextController.text.isNotEmpty) {
+      (ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+        behavior: SnackBarBehavior.floating,
+        clipBehavior: Clip.antiAliasWithSaveLayer,
+        backgroundColor: Colors.red,
+        content: Text(
+          "Verified email and password",
+          style: TextStyle(color: Colors.white),
+        ),
+      )));
+      Navigator.of(context).pushReplacementNamed("/Main");
+      setState(() {});
+      return true;
+    } else {
+      (ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+        content: Text("Wrong email or password"),
+      )));
+      setState(() {});
+      return false;
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -77,6 +103,7 @@ class _SignInTextFieldsState extends State<SignInTextFields> {
           children: [
             const SizedBox(height: 30),
             TextField(
+              controller: emailTextController,
               style: const TextStyle(color: Colors.white),
               decoration: usernameTextFieldStyle,
             ),
@@ -84,6 +111,7 @@ class _SignInTextFieldsState extends State<SignInTextFields> {
               height: 20,
             ),
             TextField(
+              controller: passwordTextController,
               obscureText: true,
               obscuringCharacter: "*",
               style: const TextStyle(color: Colors.white),
@@ -102,7 +130,7 @@ class _SignInTextFieldsState extends State<SignInTextFields> {
               height: 50,
               width: 360,
               child: ElevatedButton(
-                  onPressed: null,
+                  onPressed: _authUser,
                   style: ButtonStyle(
                       shape: const MaterialStatePropertyAll(
                         RoundedRectangleBorder(

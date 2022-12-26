@@ -1,5 +1,5 @@
-import 'package:cinema/custom_checkbox.dart';
-import 'package:cinema/ui/sign_up.dart';
+import 'package:cinema/ui/auth/sign_up.dart';
+import 'package:cinema/ui/mainscreen/MainScreen.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -13,20 +13,19 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+        routes: {
+          '/SignUp': (context) => const SignIn(),
+          '/Main': (context) => const MainScreen()
+        },
         title: 'Flutter Demo',
         theme: ThemeData(
-          // This is the theme of your application.
-          //
-          // Try running your application with "flutter run". You'll see the
-          // application has a blue toolbar. Then, without quitting the app, try
-          // changing the primarySwatch below to Colors.green and then invoke
-          // "hot reload" (press "r" in the console where you ran "flutter run",
-          // or simply save your changes to "hot reload" in a Flutter IDE).
-          // Notice that the counter didn't reset back to zero; the application
-          // is not restarted.
-          primarySwatch: Colors.blue,
+          appBarTheme: const AppBarTheme(
+            backgroundColor: Colors.black,
+          ),
+          bottomNavigationBarTheme: const  BottomNavigationBarThemeData(backgroundColor: Colors.red,selectedItemColor: Colors.white),
+          primarySwatch: Colors.red,
         ),
-        home: const SignIn());
+        home: const MainScreen());
   }
 }
 
@@ -41,19 +40,24 @@ class SignIn extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Colors.black,
       ),
-      body: Center(
-        child: Column(
-          children: [
-            Image.asset(
-              "images/logo.png",
-              width: 100,
-              height: 100,
-            ),
-            SizedBox(height: 20),
-            const Text("Create your account",style: TextStyle(fontSize: 32,color: Colors.white),),
-            const SignInTextFields()
-            //const Icon(Icons.read_more)
-          ],
+      body: SingleChildScrollView(
+        child: Center(
+          child: Column(
+            children: [
+              Image.asset(
+                "images/logo.png",
+                width: 100,
+                height: 100,
+              ),
+              const SizedBox(height: 20),
+              const Text(
+                "Create your account",
+                style: TextStyle(fontSize: 32, color: Colors.white),
+              ),
+              const SignInTextFields()
+              //const Icon(Icons.read_more)
+            ],
+          ),
         ),
       ),
     );
