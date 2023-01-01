@@ -1,5 +1,6 @@
 import 'package:cinema/ui/auth/sign_up.dart';
 import 'package:cinema/ui/mainscreen/MainScreen.dart';
+import 'package:cinema/ui/movie_details/movie_details_widget.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -15,17 +16,26 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
         routes: {
           '/SignUp': (context) => const SignIn(),
-          '/Main': (context) => const MainScreen()
+          '/Main': (context) => const MainScreen(),
+          '/Main/MovieDetails': (context) {
+            final args = ModalRoute.of(context)!.settings.arguments;
+            if (args is int) {
+              return MovieDetailsScreen(movieId: args);
+            } else {
+              return MovieDetailsScreen(movieId: 0);
+            }
+          }
         },
         title: 'Flutter Demo',
         theme: ThemeData(
           appBarTheme: const AppBarTheme(
             backgroundColor: Colors.black,
           ),
-          bottomNavigationBarTheme: const  BottomNavigationBarThemeData(backgroundColor: Colors.red,selectedItemColor: Colors.white),
+          bottomNavigationBarTheme: const BottomNavigationBarThemeData(
+              backgroundColor: Colors.red, selectedItemColor: Colors.white),
           primarySwatch: Colors.red,
         ),
-        home: const MainScreen());
+        home: const SignIn());
   }
 }
 

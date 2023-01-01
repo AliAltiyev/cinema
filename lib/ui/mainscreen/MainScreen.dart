@@ -1,6 +1,7 @@
 import 'package:cinema/ui/home/home_screen.dart';
 import 'package:flutter/material.dart';
 
+
 class MainScreen extends StatefulWidget {
   const MainScreen({Key? key}) : super(key: key);
 
@@ -9,7 +10,7 @@ class MainScreen extends StatefulWidget {
 }
 
 class _MainScreenState extends State<MainScreen> {
-  int _selectedPageIndex = 2;
+  int _selectedPageIndex = 0;
 
   void changeNavigationBarIndex(int index) {
     if (index == _selectedPageIndex) return;
@@ -35,13 +36,14 @@ class _MainScreenState extends State<MainScreen> {
           BottomNavigationBarItem(
               label: "Profile", icon: Icon(Icons.person_rounded)),
         ],
-
         elevation: 30,
         currentIndex: _selectedPageIndex,
         onTap: changeNavigationBarIndex,
       ),
-      body: const HomeScreen()
-      ,
+      body: IndexedStack(
+        index: _selectedPageIndex,
+        children: const [HomeScreen()],
+      ),
       appBar: AppBar(
         title: const Text(
           "Meta",
