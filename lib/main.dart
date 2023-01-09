@@ -1,3 +1,4 @@
+import 'package:cinema/navigation/yellow_page.dart';
 import 'package:cinema/ui/auth/sign_up.dart';
 import 'package:cinema/ui/mainscreen/MainScreen.dart';
 import 'package:cinema/ui/movie_details/movie_details_widget.dart';
@@ -37,7 +38,7 @@ class MyApp extends StatelessWidget {
               backgroundColor: Colors.red, selectedItemColor: Colors.white),
           primarySwatch: Colors.red,
         ),
-        home:  CustomSilverScrollViewExample());
+        home: const YellowPage());
   }
 }
 
