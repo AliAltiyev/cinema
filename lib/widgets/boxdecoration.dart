@@ -13,22 +13,32 @@ class BoxDecorationExample extends StatelessWidget {
           itemBuilder: (BuildContext context, int index) {
             return Padding(
               padding: const EdgeInsets.all(8.0),
-              child: Container(
-                decoration: BoxDecoration(
-                    color: Colors.yellow[100 * ((index++) % 8)],
-                    gradient: const LinearGradient(
-                        colors: [Colors.red, Colors.green, Colors.blue],
-                        begin: Alignment.topCenter,
-                        end: Alignment.bottomCenter)),
-                child: const Padding(
-                  padding: EdgeInsets.all(32.0),
-                  child: CircleAvatar(
-                    backgroundColor: Colors.cyan,
-                    child: Icon(
-                      Icons.ac_unit,
-                      color: Colors.green,
-                    ),
-                  ),
+              child: GestureDetector(
+                onTap: () {
+                  showDialog(
+                      context: context,
+                      builder: (context) => AlertDialog(
+                            title: Text("OnTapClicked ${index.toString()}"),
+                          ));
+                },
+                onDoubleTap: () {
+                  showDialog(
+                      context: context,
+                      builder: (context) => AlertDialog(
+                            title: Text("OnDoubleClicked ${index.toString()}"),
+                          ));
+                },
+                child: Container(
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(16),
+                      image: const DecorationImage(
+                          image: AssetImage("images/movie_example_image.png"),
+                          fit: BoxFit.cover),
+                      color: Colors.yellow[100 * ((index++) % 8)],
+                      gradient: const LinearGradient(
+                          colors: [Colors.red, Colors.green, Colors.blue],
+                          begin: Alignment.topCenter,
+                          end: Alignment.bottomCenter)),
                 ),
               ),
             );
