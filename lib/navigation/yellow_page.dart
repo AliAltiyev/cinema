@@ -26,14 +26,14 @@ class YellowPage extends StatelessWidget {
               ),
               ElevatedButton(
                   onPressed: () async {
-                    Navigator.pushNamed(context, "/RedPage");
+                    Navigator.pushNamed(context, "/RedPage",arguments: 60);
                   },
                   child: const Text(
                     "Go to Red Page",
                     style: TextStyle(color: Colors.white, fontSize: 14),
                   )),
               ElevatedButton(
-                style: ElevatedButton.styleFrom(primary: Colors.green),
+                style: ElevatedButton.styleFrom(backgroundColor: Colors.green),
                   onPressed: () async {
                     Navigator.pushNamed(context, "/GreenPage");
                   },
