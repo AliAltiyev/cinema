@@ -2,6 +2,7 @@ import 'package:cinema/ui/auth/sign_up.dart';
 import 'package:cinema/ui/mainscreen/MainScreen.dart';
 import 'package:cinema/ui/movie_details/movie_details_widget.dart';
 import 'package:cinema/widgets/boxdecoration.dart';
+import 'package:cinema/widgets/custom_silver_scroll_view.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -36,7 +37,7 @@ class MyApp extends StatelessWidget {
               backgroundColor: Colors.red, selectedItemColor: Colors.white),
           primarySwatch: Colors.red,
         ),
-        home:  const BoxDecorationExample());
+        home:  CustomSilverScrollViewExample());
   }
 }
 
