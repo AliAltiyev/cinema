@@ -1,4 +1,3 @@
-import 'package:cinema/navigation/red_page.dart';
 import 'package:flutter/material.dart';
 
 class YellowPage extends StatelessWidget {
@@ -27,14 +26,19 @@ class YellowPage extends StatelessWidget {
               ),
               ElevatedButton(
                   onPressed: () async {
-                    await Navigator.push<int>(context,
-                            MaterialPageRoute(builder: (red) => RedPage()))
-                        .then((int? value) {
-                      debugPrint(value.toString());
-                    });
+                    Navigator.pushNamed(context, "/RedPage");
                   },
                   child: const Text(
                     "Go to Red Page",
+                    style: TextStyle(color: Colors.white, fontSize: 14),
+                  )),
+              ElevatedButton(
+                style: ElevatedButton.styleFrom(primary: Colors.green),
+                  onPressed: () async {
+                    Navigator.pushNamed(context, "/GreenPage");
+                  },
+                  child: const Text(
+                    "Go to Green Page",
                     style: TextStyle(color: Colors.white, fontSize: 14),
                   ))
             ],

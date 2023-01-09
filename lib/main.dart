@@ -1,9 +1,6 @@
+import 'package:cinema/navigation/route_generator.dart';
 import 'package:cinema/navigation/yellow_page.dart';
 import 'package:cinema/ui/auth/sign_up.dart';
-import 'package:cinema/ui/mainscreen/MainScreen.dart';
-import 'package:cinema/ui/movie_details/movie_details_widget.dart';
-import 'package:cinema/widgets/boxdecoration.dart';
-import 'package:cinema/widgets/custom_silver_scroll_view.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -17,18 +14,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        routes: {
-          '/SignUp': (context) => const SignIn(),
-          '/Main': (context) => const MainScreen(),
-          '/Main/MovieDetails': (context) {
-            final args = ModalRoute.of(context)!.settings.arguments;
-            if (args is int) {
-              return MovieDetailsScreen(movieId: args);
-            } else {
-              return MovieDetailsScreen(movieId: 0);
-            }
-          }
-        },
+        onGenerateRoute: RouteGenerator.routeGenerator,
         title: 'Flutter Demo',
         theme: ThemeData(
           appBarTheme: const AppBarTheme(

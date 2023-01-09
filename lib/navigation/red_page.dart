@@ -12,7 +12,6 @@ class RedPage extends StatelessWidget {
     return Scaffold(
       backgroundColor: Colors.red,
       appBar: AppBar(
-automaticallyImplyLeading: false,
         title: const Text(redPage),
       ),
       body: Center(
